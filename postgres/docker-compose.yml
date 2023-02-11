@@ -1,0 +1,25 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:12-alpine
+    container_name: postgres
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      PGDATA: /data/postgres
+    volumes:
+      - postgres_data:/data/postgres
+    ports:
+      - 5432:5432
+    restart: always 
+    networks:
+      - postgres-network
+
+networks:
+  postgres-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local
