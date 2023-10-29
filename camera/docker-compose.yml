@@ -1,0 +1,15 @@
+services:
+  camera-emulator:
+    build:
+      context: .
+    container_name: camera-emulator
+    hostname: camera-emulator
+    ports:
+      - 8554:8554
+    tty: true
+    volumes:
+      - ./rtsp-simple-server.yml:/rtsp-simple-server.yml
+      - ./videos:/var/videos
+    command: bash -c "/mediamtx & ffmpeg \
+          -re -stream_loop -1 -i /var/videos/follower.mp4 \
+          -map 0:v -c:v copy -f rtsp -rtsp_transport tcp rtsp://localhost:8554/camera"
