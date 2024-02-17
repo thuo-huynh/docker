@@ -10,9 +10,9 @@ services:
       RUNNER_SCOPE: repo
       RUNNER_NAME_PREFIX: myrunner
       LABELS: some-label
-      REPO_URL: https://github.com/thuo-huynh/docker-replicated
+      REPO_URL: <REPO_URL>
       EPHEMERAL: 1
-      ACCESS_TOKEN: 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
+      ACCESS_TOKEN: <ACCESS_TOKEN>
     deploy:
       replicas: 3
       resources:
